@@ -1,0 +1,69 @@
+# Alacritty configuration
+
+# Window properties
+
+window:
+  padding:
+    x: 16
+    y: 16
+  title: Alacritty
+  dynamic_title: false
+  class:
+    instance: Alacritty
+    general: Alacritty
+
+# Scrolling
+
+scrolling:
+  history: 100000
+
+# Appearance
+
+font:
+  size: 12
+
+  normal:
+    family: Iosevka SS04
+    style: Regular
+
+  bold:
+    family: Iosevka SS04
+    style: Bold
+
+  italic:
+    family: Iosevka SS04
+    style: Italic
+
+colors:
+  primary:
+    background: '#202020'
+    foreground: '#F0F0F0'
+
+  cursor:
+    text: '#202020'
+    cursor: '#F8F8F8'
+
+  normal:
+    black: '#282A36'
+    red: '#F37F97'
+    green: '#5ADECD'
+    yellow: '#F2A272'
+    blue: '#8897F4'
+    magenta: '#C574DD'
+    cyan: '#79E6F3'
+    white: '#FDFDFD'
+
+  bright:
+    black: '#414458'
+    red: '#FF4971'
+    green: '#18E3C8'
+    yellow: '#FF8037'
+    blue: '#556FFF'
+    magenta: '#B043D1'
+    cyan: '#3FDCEE'
+    white: '#BEBEC1'
+
+background_opacity: 0.95
+
+cursor:
+  blink_interval: 750
