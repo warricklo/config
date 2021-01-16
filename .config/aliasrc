@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# Shell alias definitions
+
+# General-purpose
+
+# Root privileges.
+alias doas="doas --"
+
+# Shorten common commands and add options.
+alias ls="ls -F --color=always"
+alias la="ls -a"
+alias ll="ls -alh"
+alias lsm="ls -alht"
+alias lss="ls -alhsS"
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -Iv"
+alias mkdir="mkdir -pv"
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+alias g="git"
+alias ka="killall"
+alias ports="netstat -tulanp"
+
+# Alias vim to neovim.
+alias vim="nvim"
+
+# Alias git bare to manage configuration files.
+alias cfg="/usr/bin/git --git-dir=${HOME}/cfg --work-tree=${HOME}"
+
+# System-specific
+
+# Gentoo
+alias sync="doas emerge --sync"
+alias update="doas emerge -uDUtavq @world"
+alias install="doas emerge -tavq"
+alias deselect="doas emerge --deselect"
+alias depclean="doas emerge -cav"
+alias lspkg="qlist -IRv"
