@@ -1,0 +1,172 @@
+; Polybar configuration
+
+; Colors
+
+[colors]
+
+white = #F0F0F0
+gray = #404040
+black = #202020
+
+red = #FF4971
+green = #18E3C8
+yellow = #FF8037
+blue = #556FFF
+
+; Bars
+
+[bar/base]
+monitor = ${env:MONITOR}
+width = 100%
+height = 32
+
+override-redirect = false
+
+background = ${colors.black}
+foreground = ${colors.white}
+
+padding = 4
+module-margin = 2
+
+font-0 = Inter Medium:size=12
+font-1 = Iosevka SS04:size=12
+
+fixed-center = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+; Bar for desktop systems.
+[bar/desktop]
+inherit = bar/base
+
+modules-left = ewmh xwindow
+modules-center = date time
+modules-right = xkeyboard alsa eth
+
+; Bar for laptop systems.
+[bar/laptop]
+inherit = bar/base
+
+modules-left = ewmh xwindow
+modules-center = date time
+modules-right = xkeyboard alsa wlan eth battery
+
+; Modules
+
+; EWMH workspaces.
+[module/ewmh]
+type = internal/xworkspaces
+enable-click = true
+enable-scroll = false
+
+label-active = %name%
+label-active-padding = 1
+label-active-foreground = ${colors.yellow}
+
+label-occupied = %name%
+label-occupied-padding = 1
+label-occupied-foreground = ${colors.white}
+
+label-urgent = %name%
+label-urgent-padding = 1
+label-urgent-foreground = ${colors.red}
+
+label-empty = %name%
+label-empty-padding = 1
+label-empty-foreground = ${colors.gray}
+
+; Window title.
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+; ISO 8601 date format.
+[module/date]
+type = internal/date
+
+date = %Y-%m-%d
+label = %date%
+
+; ISO 8601 time format.
+[module/time]
+type = internal/date
+
+time = %H:%M:%S
+label = %time%
+
+; Display current keyboard layout, as well as activated toggle keys.
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+label-layout = %layout%
+
+label-indicator-on = %name%
+label-indicator-on-padding = 2
+label-indicator-on-margin = 1
+label-indicator-on-background = ${colors.red}
+
+; Sound volume.
+[module/alsa]
+type = internal/alsa
+
+format-volume = Volume: <label-volume>
+label-volume = %percentage%%
+
+format-muted = <label-muted>
+format-muted-foreground = ${colors.gray}
+label-muted = Sound muted
+
+; Wireless module.
+[module/wlan]
+type = internal/network
+
+interface = wlan0
+interval = 2.5
+
+format-connected = Wi-Fi: <label-connected>
+label-connected = %essid%
+
+format-disconnected = Wi-Fi: <label-disconnected>
+format-disconnected-foreground = ${colors.gray}
+label-disconnected = %ifname% disconnected
+
+; Ethernet module.
+[module/eth]
+type = internal/network
+
+interface = eth0
+interval = 2.5
+
+format-connected = Ethernet: <label-connected>
+label-connected = %local_ip%
+
+format-disconnected = Ethernet: <label-disconnected>
+format-disconnected-foreground = ${colors.gray}
+label-disconnected = %ifname% disconnected
+
+; Battery module.
+[module/battery]
+type = internal/battery
+
+battery = BAT0
+adapter = ADP1
+
+format-full = Battery: <label-full>
+label-full = full %percentage_raw%%
+
+format-charging = Battery: <label-charging>
+label-charging = charging %percentage_raw%%
+
+format-discharging = Battery: <label-discharging>
+label-discharging = %percentage_raw%%
+
+; Other Polybar settings
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
