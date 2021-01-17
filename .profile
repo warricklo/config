@@ -11,4 +11,5 @@ fi
 # Set default programs to environment variables.
 export TERMINAL="alacritty"
 export EDITOR="nvim"
+export VISUAL="emacs"
 export BROWSER="firefox"
