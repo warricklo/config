@@ -4,6 +4,8 @@ import Control.Monad
 import Data.Monoid
 import System.Exit
 
+import Graphics.X11.ExtraTypes.XF86
+
 import XMonad
 import XMonad.Actions.CycleWS ( nextScreen, prevScreen, shiftNextScreen, shiftPrevScreen )
 import XMonad.Actions.Navigation2D
@@ -54,11 +56,18 @@ terminal = "alacritty" :: String
 browser = "firefox" :: String
 terminalEditor = "nvim" :: String
 visualEditor = "emacs" :: String
+terminalFileManager = "nnn" :: String
+fileManager = "pcmanfm" :: String
+terminalMusicPlayer = "ncmpcpp" :: String
+musicPlayer = "spotify" :: String
 
 -- Other definitions
 
 -- The argument to pass into the terminal emulator to set a window title.
 termTitleOpt = "-t" :: String
+
+-- File path for screenshots.
+screenshotPath = "$(xdg-user-dir PICTURES)/screenshots/$(date -I\"seconds\").png" :: String
 
 -- Key bindings
 
@@ -128,7 +137,45 @@ keys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,                               xK_Return),       safeSpawn Main.terminal [])
     , ((modm .|. mod1Mask,                  xK_w),            safeSpawn browser [])
     , ((modm .|. mod1Mask,                  xK_e),            safeSpawn visualEditor [])
+    , ((modm .|. mod1Mask,                  xK_f),            safeSpawn fileManager [])
+    , ((modm .|. mod1Mask,                  xK_s),            safeSpawn musicPlayer [])
     , ((modm .|. mod1Mask,                  xK_r),            runInTerm terminalEditor)
+    , ((modm .|. mod1Mask,                  xK_n),            runInTerm terminalFileManager)
+    , ((modm .|. mod1Mask,                  xK_p),            runInTerm terminalMusicPlayer)
+
+    -- Screenshot entire desktop and save image file.
+    , ((0,                                  xK_Print),
+        spawn ("maim " ++ screenshotPath))
+    -- Select region, screenshot, and save image file.
+    , ((modm,                               xK_Print),
+        spawn ("maim -s -b 2 -c 0.9,0.9,0.9 " ++ screenshotPath))
+    -- Select region, screenshot, save image file, and copy to clipboard.
+    , ((shiftMask,                          xK_Print),
+        spawn ("maim -s -b 2 -c 0.9,0.9,0.9 | tee " ++ screenshotPath ++ " | xclip -selection clipboard -t image/png"))
+
+    -- Multimedia keys.
+    , ((0,                                  xF86XK_AudioMute),
+        spawn "amixer set Master toggle")
+    , ((0,                                  xF86XK_AudioLowerVolume),
+        spawn "amixer set Master unmute 1%-")
+    , ((0,                                  xF86XK_AudioRaiseVolume),
+        spawn "amixer set Master unmute 1%+")
+    , ((shiftMask,                          xF86XK_AudioLowerVolume),
+        spawn "amixer set Master unmute 10%-")
+    , ((shiftMask,                          xF86XK_AudioRaiseVolume),
+        spawn "amixer set Master unmute 10%+")
+    , ((0,                                  xF86XK_AudioPlay),
+        spawn "mpc toggle")
+    , ((0,                                  xF86XK_AudioStop),
+        spawn "mpc stop")
+    , ((0,                                  xF86XK_AudioPrev),
+        spawn "mpc seek -10")
+    , ((0,                                  xF86XK_AudioNext),
+        spawn "mpc seek +10")
+    , ((shiftMask,                          xF86XK_AudioPrev),
+        spawn "mpc prev")
+    , ((shiftMask,                          xF86XK_AudioNext),
+        spawn "mpc next")
     ]
     ++
     [((m .|. modm, k), windows $ f i)
