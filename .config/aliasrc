@@ -31,10 +31,20 @@ alias cfg="/usr/bin/git --git-dir=${HOME}/cfg --work-tree=${HOME}"
 
 # System-specific
 
-# Gentoo
-alias sync="doas emerge --sync"
-alias update="doas emerge -uDUtavq @world"
-alias install="doas emerge -tavq"
-alias deselect="doas emerge --deselect"
-alias depclean="doas emerge -cav"
-alias lspkg="qlist -IRv"
+# Linux.
+if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
+	# Gentoo.
+	if [[ -x "$(command -v emerge)" ]]; then
+		alias sync="doas emerge --sync"
+		alias update="doas emerge -uDUtavq @world"
+		alias install="doas emerge -tavq"
+		alias deselect="doas emerge --deselect"
+		alias depclean="doas emerge -cav"
+		alias lspkg="qlist -IRv"
+	fi
+# FreeBSD.
+elif [[ "${OSTYPE}" == "freebsd"* ]]; then
+	alias fetch="doas portsnap fetch"
+	alias extract="doas portsnap fetch extract"
+	alias update="doas portsnap fetch update"
+fi
