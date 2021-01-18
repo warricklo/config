@@ -38,6 +38,9 @@ setopt rm_star_silent
 bindkey -v "^?" backward-delete-char
 export KEYTIMEOUT=1
 
+# GPG.
+export GPG_TTY=$(tty)
+
 # Load aliases.
 if [ -f "${HOME}/.config/aliasrc" ]; then
 	source "${HOME}/.config/aliasrc"
