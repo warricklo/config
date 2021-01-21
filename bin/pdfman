@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Open man pages as a PDF in zathura.
+
+# Pass the manual through ps2pdf because zathura has weird formatting
+# when passed directly from man.
+man -t $1 | ps2pdf - - | zathura -
