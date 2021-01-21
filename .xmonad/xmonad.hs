@@ -259,9 +259,9 @@ layoutHook =
 -- Startup
 
 startupHook = do
-    spawnOnce "feh --no-fehbg --bg-scale ${HOME}/backgrounds/background"
-    spawnOnce "picom --experimental-backends --config ${HOME}/.config/picom/picom.conf"
-    spawn "${HOME}/bin/polybar.sh"
+    spawnOnce "feh --no-fehbg --bg-scale $HOME/backgrounds/background"
+    spawnOnce "picom --experimental-backends --config $HOME/.config/picom/picom.conf"
+    spawn ". $HOME/bin/polybar"  -- For some reason the script will not run unless it is sourced.
 
 -- Window rules
 

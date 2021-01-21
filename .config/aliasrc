@@ -22,17 +22,18 @@ alias diff="diff --color=auto"
 alias g="git"
 alias ka="killall"
 alias ports="netstat -tulanp"
+alias ipinfo="curl https://ipinfo.io/ip -w '\n'"
 
 # Alias vim to neovim.
 alias vim="nvim"
 
 # Alias git bare to manage configuration files.
-alias cfg="/usr/bin/git --git-dir=${HOME}/cfg --work-tree=${HOME}"
+alias cfg="/usr/bin/git --git-dir=$HOME/cfg --work-tree=$HOME"
 
 # System-specific
 
 # Linux.
-if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	# Gentoo.
 	if [[ -x "$(command -v emerge)" ]]; then
 		alias sync="doas emerge --sync"
@@ -43,7 +44,7 @@ if [[ "${OSTYPE}" == "linux-gnu"* ]]; then
 		alias lspkg="qlist -IRv"
 	fi
 # FreeBSD.
-elif [[ "${OSTYPE}" == "freebsd"* ]]; then
+elif [[ "$OSTYPE" == "freebsd"* ]]; then
 	alias fetch="doas portsnap fetch"
 	alias extract="doas portsnap fetch extract"
 	alias update="doas portsnap fetch update"

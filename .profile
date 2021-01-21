@@ -1,14 +1,23 @@
 # Shell profile
 
-# Export path.
-if [ -d "${HOME}/bin" ]; then
-	export PATH="${PATH}:${HOME}/bin"
+# Export path
+
+# Scripts and local binaries.
+if [ -d "$HOME/bin" ]; then
+	export PATH="$PATH:$HOME/bin"
 fi
-if [ -d "${HOME}/.local/bin" ]; then
-	export PATH="${PATH}:${HOME}/.local/bin"
+if [ -d "$HOME/.local/bin" ]; then
+	export PATH="$PATH:$HOME/.local/bin"
 fi
 
-# Set default programs to environment variables.
+# Doom Emacs binaries.
+if [ -d "$HOME/.emacs.d/bin" ]; then
+	export PATH="$PATH:$HOME/.emacs.d/bin"
+fi
+
+# Environment variables
+
+# Set default programs.
 export TERMINAL="alacritty"
 export EDITOR="nvim"
 export VISUAL="emacs"
