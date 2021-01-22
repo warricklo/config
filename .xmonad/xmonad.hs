@@ -16,13 +16,11 @@ import XMonad.Hooks.FadeWindows ( isFloating )
 import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageDocks ( ToggleStruts(..), docks, avoidStruts )
 import XMonad.Hooks.ManageHelpers ( isFullscreen, doFullFloat )
-import XMonad.Layout.BinarySpacePartition
 import XMonad.Layout.Grid
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.NoBorders ( noBorders )
 import XMonad.Layout.Renamed
 import XMonad.Layout.Spacing ( Border(..), Spacing(..), spacingRaw )
-import XMonad.Layout.ThreeColumns
 import XMonad.Layout.ToggleLayouts ( ToggleLayout(..), toggleLayouts )
 import XMonad.Util.Run ( safeSpawn, safeSpawnProg )
 import XMonad.Util.SpawnOnce
@@ -118,18 +116,6 @@ keys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask,                 xK_j),            windowSwap D False)
     , ((modm .|. shiftMask,                 xK_h),            windowSwap L False)
     , ((modm .|. shiftMask,                 xK_l),            windowSwap R False)
-
-    -- Binary space partition layout.
-    , ((modm .|. controlMask,               xK_k),            sendMessage (ExpandTowards U))
-    , ((modm .|. controlMask,               xK_j),            sendMessage (ExpandTowards D))
-    , ((modm .|. controlMask,               xK_h),            sendMessage (ExpandTowards L))
-    , ((modm .|. controlMask,               xK_l),            sendMessage (ExpandTowards R))
-    , ((modm .|. controlMask .|. shiftMask, xK_k),            sendMessage (ShrinkFrom U))
-    , ((modm .|. controlMask .|. shiftMask, xK_j),            sendMessage (ShrinkFrom D))
-    , ((modm .|. controlMask .|. shiftMask, xK_h),            sendMessage (ShrinkFrom L))
-    , ((modm .|. controlMask .|. shiftMask, xK_l),            sendMessage (ShrinkFrom R))
-    , ((modm,                               xK_a),            sendMessage Balance)
-    , ((modm .|. shiftMask,                 xK_a),            sendMessage Equalize)
 
     -- Run programs.
     , ((modm,                               xK_space),        safeSpawn "rofi" ["-show", "drun"])
@@ -235,18 +221,12 @@ ratio = 1 / 2
 layoutSpacing :: Integer -> l a -> ModifiedLayout Spacing l a
 layoutSpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 
-grid = renamed [Replace "Grid"]
-    $ layoutSpacing 8
-    $ GridRatio (3 / 2)
 tall = renamed [Replace "Tall"]
     $ layoutSpacing 8
     $ Tall nmaster delta (toRational (2 / (1 + sqrt(5))))  -- Use the inverse golden ratio.
-bsp = renamed [Replace "BSP"]
+grid = renamed [Replace "Grid"]
     $ layoutSpacing 8
-    $ emptyBSP
-threeColumn = renamed [Replace "ThreeColumn"]
-    $ layoutSpacing 8
-    $ ThreeCol nmaster delta ratio
+    $ GridRatio (3 / 2)
 full = renamed [Replace "Full"]
     $ noBorders
     $ Full
@@ -254,7 +234,7 @@ full = renamed [Replace "Full"]
 layoutHook =
     avoidStruts
     $ toggleLayouts full
-    $ grid ||| tall ||| bsp ||| threeColumn ||| Full
+    $ tall ||| grid ||| Full
 
 -- Startup
 
