@@ -5,7 +5,7 @@ autoload -U colors
 colors
 
 # Set prompt.
-export PS1="%{${fg[cyan]}%}%~%{${reset_color}%} %{${fg[blue]}%}$%{${reset_color}%} "
+export PS1="%F{14}%~%f %(?..%B%F{9}%?%f%b )%F{12}∮%f "
 
 # History file configuration.
 HISTSIZE=100000
