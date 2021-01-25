@@ -14,6 +14,8 @@ set lazyredraw
 set ignorecase
 set mouse=a
 set guioptions=a
+set nobackup nowritebackup
+set list listchars=eol:¬,tab:»\ ,trail:∙,extends:›,precedes:‹
 
 " Tabs
 
