@@ -43,7 +43,7 @@ workspaces = map show [1 .. 10] :: [String]
 focusFollowsMouse = False :: Bool
 clickJustFocuses = False :: Bool
 
-borderWidth = 2 :: Dimension
+borderWidth = 1 :: Dimension
 normalBorderColor = "#202020" :: String
 focusedBorderColor = "#556FFF":: String
 

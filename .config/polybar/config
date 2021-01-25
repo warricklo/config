@@ -18,7 +18,7 @@ blue = #556FFF
 [bar/base]
 monitor = ${env:MONITOR}
 width = 100%
-height = 32
+height = 24
 
 override-redirect = false
 
@@ -28,8 +28,8 @@ foreground = ${colors.white}
 padding = 4
 module-margin = 2
 
-font-0 = Inter Medium:size=12
-font-1 = Iosevka SS04:size=12
+font-0 = Inter Medium:size=10
+font-1 = Iosevka SS04:size=10
 
 fixed-center = true
 
