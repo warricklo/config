@@ -91,20 +91,22 @@ label = %title:0:30:...%
 [module/date]
 type = internal/date
 
-date = %Y-%m-%d
 label = %date%
+date = %Y-%m-%d
 
 ; ISO 8601 time format.
 [module/time]
 type = internal/date
 
-time = %H:%M:%S
 label = %time%
+time = %H:%M:%S
 
 ; Display current keyboard layout, as well as activated toggle keys.
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
+
+format = Keyboard: <label-layout> <label-indicator>
 
 label-layout = %layout%
 
@@ -146,7 +148,7 @@ interface = eth0
 interval = 2.5
 
 format-connected = Ethernet: <label-connected>
-label-connected = %local_ip%
+label-connected = connected
 
 format-disconnected = Ethernet: <label-disconnected>
 format-disconnected-foreground = ${colors.gray}
