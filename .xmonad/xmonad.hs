@@ -6,9 +6,10 @@ import System.Exit
 
 import Graphics.X11.ExtraTypes.XF86
 
-import XMonad
+import XMonad hiding ( (|||) )
 import XMonad.Actions.CycleWS ( nextScreen, prevScreen, shiftNextScreen, shiftPrevScreen )
 import XMonad.Actions.Navigation2D
+import XMonad.Actions.Promote
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
@@ -17,10 +18,11 @@ import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageDocks ( ToggleStruts(..), docks, avoidStruts )
 import XMonad.Hooks.ManageHelpers ( isFullscreen, doFullFloat )
 import XMonad.Layout.Grid
+import XMonad.Layout.LayoutCombinators ( (|||), JumpToLayout(..) )
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.NoBorders ( noBorders )
 import XMonad.Layout.Renamed
-import XMonad.Layout.Spacing ( Border(..), Spacing(..), spacingRaw )
+import XMonad.Layout.Spacing
 import XMonad.Layout.ToggleLayouts ( ToggleLayout(..), toggleLayouts )
 import XMonad.Util.Run ( safeSpawn, safeSpawnProg )
 import XMonad.Util.SpawnOnce
@@ -78,9 +80,11 @@ keys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Switching layouts.
     , ((modm,                               xK_Tab),          sendMessage NextLayout)
-    , ((modm .|. shiftMask,                 xK_Tab),          sendMessage FirstLayout)
-    , ((modm .|. mod1Mask,                  xK_space),        toggleFullscreen)
-    , ((modm,                               xK_f),            withFocused toggleFloat)
+    , ((modm,                               xK_m),            toggleFullscreen)
+    , ((modm,                               xK_n),            withFocused toggleFloat)
+    , ((modm,                               xK_t),            sendMessage (JumpToLayout "Tall"))
+    , ((modm,                               xK_g),            sendMessage (JumpToLayout "Grid"))
+    , ((modm,                               xK_f),            sendMessage (JumpToLayout "Full"))
 
     -- Focus and swap between monitors.
     , ((modm,                               xK_comma),        prevScreen)
@@ -95,6 +99,13 @@ keys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Change the number of windows in the master pane.
     , ((modm .|. shiftMask,                 xK_bracketleft),  sendMessage (IncMasterN $ 1))
     , ((modm .|. shiftMask,                 xK_bracketright), sendMessage (IncMasterN $ -1))
+
+    -- Change the size of the window and screen spacing.
+    , ((modm,                               xK_minus),        decWindowSpacing 4 >> decScreenSpacing 4)
+    , ((modm,                               xK_equal),        incWindowSpacing 4 >> incScreenSpacing 4)
+
+    -- Promote window to the master pane, or swap it with the next window in the stack.
+    , ((modm,                               xK_p),            promote)
 
     -- Switch the layer of focus for directional navigation.
     , ((modm .|. controlMask,               xK_space),        switchLayer)
@@ -121,7 +132,7 @@ keys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,                               xK_space),        safeSpawn "rofi" ["-show", "drun"])
     , ((modm .|. shiftMask,                 xK_space),        safeSpawn "rofi" ["-show", "run"])
     , ((modm,                               xK_Return),       safeSpawn Main.terminal [])
-    , ((modm .|. mod1Mask,                  xK_w),            safeSpawn browser [])
+    , ((modm .|. mod1Mask,                  xK_b),            safeSpawn browser [])
     , ((modm .|. mod1Mask,                  xK_e),            safeSpawn visualEditor [])
     , ((modm .|. mod1Mask,                  xK_f),            safeSpawn fileManager [])
     , ((modm .|. mod1Mask,                  xK_s),            safeSpawn musicPlayer [])
