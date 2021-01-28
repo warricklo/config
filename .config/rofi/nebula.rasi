@@ -1,0 +1,69 @@
+/* Rofi theme */
+
+configuration {
+	font: "Inter 10";
+	show-icons: true;
+	modi: "drun,run,ssh,window";
+	display-drun: "drun";
+	display-run: "run";
+	display-ssh: "ssh";
+	display-window: "window";
+}
+
+* {
+	white: #F0F0F0;
+	black: #101010;
+
+	yellow: #FF8037;
+	blue: #556FFF;
+
+	background-color: @black;
+	text-color: @white;
+
+	lines: 16;
+	border: 2;
+	margin: 2;
+}
+
+window {
+	border-color: @yellow;
+	width: 32%;
+	padding: 32;
+}
+
+mainbox {
+ 	children: [inputbar, listview];
+}
+
+inputbar {
+	children: [prompt, entry];
+}
+
+listview {
+	columns: 1;
+}
+
+prompt {
+	font: "Iosevka SS04 Extended Black 12";
+}
+
+entry {
+	font: "Iosevka SS04 Extended 12";
+}
+
+element-icon {
+	size: 24px;
+}
+
+element-text {
+	horizontal-align: 0;
+	vertical-align: 0.5;
+}
+
+element {
+	padding: 1;
+}
+
+element selected {
+	background-color: @blue;
+}

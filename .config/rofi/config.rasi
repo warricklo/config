@@ -1,0 +1,5 @@
+/* Rofi configuration */
+
+configuration {
+	theme: "nebula";
+}
