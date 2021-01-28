@@ -1,0 +1,42 @@
+# Dunst configuration
+
+[global]
+font = "Inter Regular 10"
+markup = full
+format = "<b>%s</b> <i>%p</i>\n%b"
+alignment = left
+show_age_threshold = 60
+idle_threshold = 120
+
+geometry = "360x8-8+32"
+
+icon_position = left
+max_icon_size = 32
+icon_path = /usr/share/icons/Papirus/32x32/status
+
+padding = 4
+horizontal_padding = 4
+frame_width = 1
+separator_height = 1
+separator_color = "#404040"
+
+[shortcuts]
+close = ctrl+space
+close_all = ctrl+mod1+space
+history = ctrl+mod1+grave
+context = ctrl+mod1+slash
+
+[urgency_critical]
+background = "#202020"
+foreground = "#F0F0F0"
+frame_color = "#FF4971"
+
+[urgency_normal]
+background = "#202020"
+foreground = "#F0F0F0"
+frame_color = "#FF8037"
+
+[urgency_low]
+background = "#202020"
+foreground = "#F0F0F0"
+frame_color = "#18E3C8"
