@@ -55,19 +55,11 @@ terminal = "alacritty" :: String
 browser = "brave" :: String
 terminalEditor = "nvim" :: String
 visualEditor = "emacs" :: String
-terminalFileManager = "nnn" :: String
-fileManager = "pcmanfm" :: String
-terminalMusicPlayer = "ncmpcpp" :: String
-musicPlayer = "spotify" :: String
 
 -- Other definitions
 
--- The argument to pass into the terminal emulator to set a window title.
-termTitleOpt = "-t" :: String
-
 -- File path for screenshots.
 screenshotPath = "$(xdg-user-dir PICTURES)/screenshots/$(date -I\"seconds\").png" :: String
-
 
 -- 2D navigation
 
@@ -83,9 +75,9 @@ navigation2DConfig = def
 -- Key bindings
 
 keys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
-    [ ((modm, xK_Escape), spawn "xmonad --recompile && xmonad --restart")
-    , ((modm .|. shiftMask, xK_Escape), io $ exitWith ExitSuccess)
-    , ((modm .|. controlMask, xK_Escape), io $ exitWith ExitSuccess)
+    [ ((modm .|. controlMask, xK_Escape), io $ exitWith ExitSuccess)
+    , ((modm .|. mod1Mask, xK_Escape), spawn "xmonad --recompile && xmonad --restart")
+
     , ((modm, xK_BackSpace), kill)
     , ((modm .|. shiftMask, xK_c), kill)
 
@@ -196,7 +188,7 @@ keys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Reimplementation of XMonad.Util.Run.safeRunInTerm because the function
     -- appears to not work when passing arguments into the terminal emulator.
     runInTerm :: String -> X ()
-    runInTerm command = safeSpawn Main.terminal [termTitleOpt, command, "-e", command]
+    runInTerm command = safeSpawn Main.terminal ["-e", command]
 
     -- Toggle struts and toggle the Full layout.
     toggleFullscreen :: X ()
