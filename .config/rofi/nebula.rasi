@@ -50,11 +50,11 @@ listview {
 }
 
 prompt {
-	font: "Iosevka SS04 Extended Black 12";
+	font: "Iosevka Aile Bold 12";
 }
 
 entry {
-	font: "Iosevka SS04 Extended 12";
+	font: "Iosevka Aile 12";
 }
 
 element-icon {
