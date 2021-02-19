@@ -19,9 +19,10 @@ fi
 
 # Set default programs.
 export TERMINAL="alacritty"
+export PAGER="less"
 export EDITOR="nvim"
 export VISUAL="emacs"
-export BROWSER="firefox"
+export BROWSER="brave"
 
 # Rust env vars.
 source "$HOME/.cargo/env"

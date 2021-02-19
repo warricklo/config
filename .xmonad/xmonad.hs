@@ -52,7 +52,7 @@ windowSize = W.RationalRect 0.2 0.2 0.6 0.6
 -- Program definitions
 
 terminal = "alacritty" :: String
-browser = "firefox" :: String
+browser = "brave" :: String
 terminalEditor = "nvim" :: String
 visualEditor = "emacs" :: String
 terminalFileManager = "nnn" :: String
@@ -260,7 +260,7 @@ manageHook = composeAll
     , appName =? "desktop_window" --> doIgnore
     , stringProperty "_NET_WM_WINDOW_TYPE" =? "_NET_WM_WINDOW_TYPE_DIALOG" --> doFloat
     , className =? "Xmessage" --> doFloat
-    , className =? "Firefox" <&&> appName =? "Toolkit" --> doFloat  -- Firefox Picture-in-Picture windows.
+    , title =? "Picture-in-picture" --> doFloat  -- Picture-in-picture windows.
     , className =? "Gimp" --> doFloat -- Gimp windows.
     ]
 
