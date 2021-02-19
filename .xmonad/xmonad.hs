@@ -42,8 +42,8 @@ workspaces = map show [1 .. 10] :: [String]
 focusFollowsMouse = False :: Bool
 clickJustFocuses = False :: Bool
 
-borderWidth = 1 :: Dimension
-normalBorderColor = "#202020" :: String
+borderWidth = 2 :: Dimension
+normalBorderColor = "#101010" :: String
 focusedBorderColor = "#556FFF":: String
 
 -- Default geometry of a floating window.

@@ -8,7 +8,7 @@ alignment = left
 show_age_threshold = 60
 idle_threshold = 120
 
-geometry = "360x8-8+32"
+geometry = "360x8-32+56"
 
 icon_position = left
 max_icon_size = 32
@@ -16,7 +16,7 @@ icon_path = /usr/share/icons/Papirus/32x32/status
 
 padding = 4
 horizontal_padding = 4
-frame_width = 1
+frame_width = 2
 separator_height = 1
 separator_color = "#404040"
 
@@ -26,17 +26,17 @@ close_all = ctrl+mod1+space
 history = ctrl+mod1+grave
 context = ctrl+mod1+slash
 
-[urgency_critical]
-background = "#202020"
-foreground = "#F0F0F0"
-frame_color = "#FF4971"
-
-[urgency_normal]
-background = "#202020"
-foreground = "#F0F0F0"
-frame_color = "#FF8037"
-
 [urgency_low]
 background = "#202020"
 foreground = "#F0F0F0"
 frame_color = "#18E3C8"
+
+[urgency_normal]
+background = "#202020"
+foreground = "#F0F0F0"
+frame_color = "#556FFF"
+
+[urgency_critical]
+background = "#202020"
+foreground = "#F0F0F0"
+frame_color = "#FF4971"

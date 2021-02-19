@@ -27,7 +27,9 @@ configuration {
 }
 
 window {
-	border-color: @yellow;
+	border: 2px;
+	border-color: @blue;
+	border-radius: 4px;
 	width: 32%;
 	padding: 32px;
 }
