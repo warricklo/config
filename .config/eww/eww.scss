@@ -1,0 +1,21 @@
+* {
+	all: unset;
+}
+
+window {
+	background-color: #101010;
+	//background-color: #ffffff;
+	color: #F0F0F0;
+	font-family: "Inter Regular", "Font Awesome 5 Free Solid";
+	font-size: 16px;
+	border-radius: 4px;
+}
+
+button:hover {
+	color: #FF8037;
+	// color: #556FFF;
+}
+
+.sys {
+	font-size: 64px;
+}

@@ -22,3 +22,6 @@ export TERMINAL="alacritty"
 export EDITOR="nvim"
 export VISUAL="emacs"
 export BROWSER="firefox"
+
+# Rust env vars.
+source "$HOME/.cargo/env"

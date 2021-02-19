@@ -140,17 +140,17 @@ keys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_h), windowSwap L False)
     , ((modm .|. shiftMask, xK_l), windowSwap R False)
 
-    -- Run programs.
+    -- Menus and widgets.
+    , ((modm, xK_Escape), safeSpawn "eww" ["open", "sys"])
+    , ((modm .|. shiftMask, xK_Escape), safeSpawn "eww" ["close-all"])
     , ((modm, xK_space), safeSpawn "rofi" ["-show", "drun"])
     , ((modm .|. shiftMask, xK_space), safeSpawn "rofi" ["-show", "run"])
+
+    -- Run programs.
     , ((modm, xK_Return), safeSpawn Main.terminal [])
     , ((modm .|. mod1Mask, xK_b), safeSpawn browser [])
     , ((modm .|. mod1Mask, xK_e), safeSpawn visualEditor [])
-    , ((modm .|. mod1Mask, xK_f), safeSpawn fileManager [])
-    , ((modm .|. mod1Mask, xK_s), safeSpawn musicPlayer [])
     , ((modm .|. mod1Mask, xK_r), runInTerm terminalEditor)
-    , ((modm .|. mod1Mask, xK_n), runInTerm terminalFileManager)
-    , ((modm .|. mod1Mask, xK_p), runInTerm terminalMusicPlayer)
 
     -- Screenshot entire desktop and save image file.
     , ((0, xK_Print),
@@ -249,6 +249,7 @@ layoutHook =
 startupHook = do
     spawnOnce "feh --no-fehbg --bg-scale $HOME/backgrounds/background"
     spawnOnce "picom --experimental-backends --config $HOME/.config/picom/picom.conf"
+    spawnOnce "eww daemon"
     spawn "sh $HOME/bin/polybar"  -- For some reason the script will not run unless it is sourced.
 
 -- Window rules

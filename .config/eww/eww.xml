@@ -1,0 +1,21 @@
+<eww>
+	<definitions>
+		<def name="sys">
+			<box orientation="h">
+				<button class="lock" onclick="$HOME/bin/lock"></button>
+				<button class="logout" onclick="$HOME/bin/logout"></button>
+				<button class="suspend" onclick="$HOME/bin/suspend"></button>
+				<button class="reboot" onclick="$HOME/bin/reboot"></button>
+				<button class="shutdown" onclick="$HOME/bin/shutdown"></button>
+			</box>
+		</def>
+	</definitions>
+	<windows>
+		<window name="sys" stacking="fg" focusable="false">
+			<geometry anchor="center" x="0" y="0" width="50%" height="180px" />
+			<widget>
+				<sys />
+			</widget>
+		</window>
+	</windows>
+</eww>
