@@ -36,21 +36,19 @@ fixed-center = true
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-; Bar for desktop systems.
-[bar/desktop]
+; Bar for EWMH.
+[bar/bar]
 inherit = bar/base
 
-modules-left = ewmh xmonad-layout xwindow
-modules-center = date time
-modules-right = xkeyboard alsa eth
+modules-left = ewmh xwindow
+modules-right = xkeyboard alsa wlan eth battery date time
 
-; Bar for laptop systems.
-[bar/laptop]
+; Bar for XMonad.
+[bar/xmonad]
 inherit = bar/base
 
-modules-left = ewmh xmonad-layout xwindow
-modules-center = date time
-modules-right = xkeyboard alsa wlan eth battery
+modules-left = ewmh xmonad xwindow
+modules-right = xkeyboard alsa wlan eth battery date time
 
 ; Modules
 
@@ -76,8 +74,8 @@ label-empty = %name%
 label-empty-padding = 1
 label-empty-foreground = ${colors.gray}
 
-; XMonad tiling layout.
-[module/xmonad-layout]
+; XMonad information.
+[module/xmonad]
 type = custom/script
 exec = xmonad-log
 tail = true
@@ -131,28 +129,18 @@ label-muted = Sound muted
 type = internal/network
 
 interface = wlan0
-interval = 2.5
 
 format-connected = Wi-Fi: <label-connected>
 label-connected = %essid%
-
-format-disconnected = Wi-Fi: <label-disconnected>
-format-disconnected-foreground = ${colors.gray}
-label-disconnected = %ifname% disconnected
 
 ; Ethernet module.
 [module/eth]
 type = internal/network
 
 interface = eth0
-interval = 2.5
 
 format-connected = Ethernet: <label-connected>
 label-connected = connected
-
-format-disconnected = Ethernet: <label-disconnected>
-format-disconnected-foreground = ${colors.gray}
-label-disconnected = %ifname% disconnected
 
 ; Battery module.
 [module/battery]

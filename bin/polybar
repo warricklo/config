@@ -2,9 +2,11 @@
 
 killall -q polybar
 
+bar="xmonad"
+
 # List all connected monitors.
-monitors=$(xrandr -q | grep -E "[^dis]connected" | awk '{print $1}')
+monitors="$(xrandr -q | grep -E "[^dis]connected" | awk '{print $1}')"
 
 for i in $monitors; do
-	MONITOR=${i} polybar desktop & disown
+	MONITOR=$i polybar $bar & disown
 done
