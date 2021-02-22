@@ -7,7 +7,6 @@ window:
     x: 16
     y: 16
   title: Alacritty
-  dynamic_title: false
   class:
     instance: Alacritty
     general: Alacritty
@@ -16,6 +15,7 @@ window:
 
 scrolling:
   history: 100000
+  multiplier: 8
 
 # Appearance
 
@@ -66,4 +66,6 @@ colors:
 background_opacity: 0.95
 
 cursor:
+  style: Block
+  unfocused_hollow: true
   blink_interval: 750
