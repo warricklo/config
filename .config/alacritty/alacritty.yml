@@ -36,7 +36,7 @@ font:
 
 colors:
   primary:
-    background: '#202020'
+    background: '#181818'
     foreground: '#F0F0F0'
 
   cursor:

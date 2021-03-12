@@ -27,16 +27,16 @@ history = ctrl+mod1+grave
 context = ctrl+mod1+slash
 
 [urgency_low]
-background = "#202020"
+background = "#181818"
 foreground = "#F0F0F0"
 frame_color = "#18E3C8"
 
 [urgency_normal]
-background = "#202020"
+background = "#181818"
 foreground = "#F0F0F0"
 frame_color = "#556FFF"
 
 [urgency_critical]
-background = "#202020"
+background = "#181818"
 foreground = "#F0F0F0"
 frame_color = "#FF4971"
