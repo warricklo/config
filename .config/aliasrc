@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Shell alias definitions
+
+# General-purpose
+
+# This first alias gets inherited by the other ls aliases.
+alias ls="ls -F"
+alias la="ls -A"
+alias ll="ls -alh"
+alias lsm="ls -alht"
+alias lss="ls -alhsS"
+
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -iv"
+alias mkdir="mkdir -p"
+
+alias ipinfo="curl https://ipinfo.io/ip -w '\n'"
+
+# Alias vim to neovim.
+alias vim="nvim"
+
+# Alias git bare to manage configuration files.
+alias cfg="/usr/bin/git --git-dir=\$HOME/cfg --work-tree=\$HOME"
