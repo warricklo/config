@@ -1,0 +1,46 @@
+# Dunst configuration
+
+[global]
+	font = "Inter Regular 10"
+	markup = full
+	format = "<b>%s</b> <i>%p</i>\n%b"
+	alignment = left
+
+	follow = keyboard
+	notification_limit = 0
+	show_age_threshold = 60
+	idle_threshold = 120
+
+	width = 360
+	height = 180
+	origin = bottom-right
+	offset = 8x8
+
+	icon_position = left
+	max_icon_size = 32
+	icon_path = /usr/share/icons/Paper/32x32/status
+
+	padding = 4
+	horizontal_padding = 4
+	frame_width = 1
+	separator_height = 1
+	separator_color = "#202020"
+
+	mouse_left_click = do_action
+	mouse_middle_click = close_current
+	mouse_right_click = close_all
+
+[urgency_low]
+	background = "#101010"
+	foreground = "#ebdbb2"
+	frame_color = "#5c991f"
+
+[urgency_normal]
+	background = "#101010"
+	foreground = "#ebdbb2"
+	frame_color = "#497287"
+
+[urgency_critical]
+	background = "#101010"
+	foreground = "#ebdbb2"
+	frame_color = "#fa1d48"
