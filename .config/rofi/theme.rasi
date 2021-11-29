@@ -1,0 +1,105 @@
+/* Rofi theme */
+
+configuration {
+	font: "Inter 10";
+	show-icons: true;
+	icon-theme: "Paper";
+	modi: "drun,run,window,ssh";
+	sidebar-mode: true;
+	display-drun: "drun";
+	display-run: "run";
+	display-window: "window";
+	display-ssh: "ssh";
+}
+
+* {
+	white: #ebdbb2;
+	black: #101010;
+
+	orange: #eb744c;
+	blue: #497287;
+
+	background-color: @black;
+	text-color: @white;
+
+	border: 2px;
+	margin: 2px;
+}
+
+window {
+	border: 1px;
+	border-color: @orange;
+	border-radius: 8px;
+	width: 32%;
+	padding: 32px;
+}
+
+inputbar {
+	children: [prompt, entry];
+	border: 0 0 2px 0;
+	border-color: @blue;
+	padding: 4px;
+}
+
+listview {
+	columns: 1;
+}
+
+prompt {
+	font: "Iosevka Extended Bold 12";
+}
+
+entry {
+	font: "Iosevka Extended 12";
+	cursor: text;
+}
+
+element,
+element-text,
+element-icon,
+button {
+	cursor: pointer;
+}
+
+element {
+	font: "Inter Medium 12";
+	border: 0;
+	border-radius: 4px;
+	padding: 2px;
+}
+
+element selected {
+	background-color: @orange;
+	text-color: @black;
+}
+
+element-text {
+	background-color: inherit;
+	text-color: inherit;
+	horizontal-align: 0;
+	vertical-align: 0.5;
+}
+
+element-icon {
+	size: 24px;
+	background-color: inherit;
+	text-color: inherit;
+	horizontal-align: 0.5;
+	vertical-align: 0.5;
+}
+
+button {
+	background-color: @white;
+	text-color: @black;
+	font: "Inter Bold 10";
+	border: 0;
+	border-radius: 4px;
+	padding: 4px;
+	horizontal-align: 0.5;
+	vertical-align: 0.5;
+}
+
+button selected {
+	background-color: @blue;
+	text-color: @white;
+}
