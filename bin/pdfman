@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Open man pages as a PDF in zathura.
+
+man -Tpdf "$@" | zathura -

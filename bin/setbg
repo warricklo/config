@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Set images as background with feh.
+
+# Get absolute path of file.
+if ! file="$(realpath "$1" 2> /dev/null)"; then
+	echo "Usage: setbg <file>"
+	exit 0
+fi
+
+# Check if file is an image.
+case "$(file -bi "$file")" in
+	image/*)
+		;;
+	*)
+		echo "setbg: invalid file operand" 1>&2
+		exit 1
+		;;
+esac
+
+printf -- "#!/bin/sh\n\n" > "$HOME/bin/bg"
+printf -- "feh --no-fehbg --bg-scale %s\n" "$file" >> "$HOME/bin/bg"
+chmod 755 "$HOME/bin/bg"
+
+sh "$HOME/bin/bg"
+exit 0

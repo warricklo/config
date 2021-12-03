@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Clear shell history.
+
+if [ -f "$HISTFILE" ]; then
+	: > "$HISTFILE"
+fi
+
+# Script must be sourced for this to work.
+history -c > /dev/null 2>&1
+history -p > /dev/null 2>&1

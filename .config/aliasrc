@@ -21,5 +21,8 @@ alias ipinfo="curl https://ipinfo.io/ip -w '\n'"
 # Alias vim to neovim.
 alias vim="nvim"
 
+# Clear history (needs to be sourced).
+alias clhs="source \$HOME/bin/clhs"
+
 # Alias git bare to manage configuration files.
 alias cfg="/usr/bin/git --git-dir=\$HOME/cfg --work-tree=\$HOME"
