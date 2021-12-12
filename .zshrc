@@ -11,12 +11,13 @@ PS1="%F{3}[%n@%m %~]%f %(?..%B%F{9}%?%f%b )%(!.#.$) "
 setopt hist_ignore_dups
 SAVEHIST=100000
 HISTSIZE=100000
-HISTFILE="$HOME/.cache/zsh/history"
+HISTFILE="$XDG_CACHE_HOME/zsh/history"
 
 # Enable tab completion.
 autoload -U compinit
 zstyle ":completion:*" menu select
 zmodload zsh/complist
+compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 
 # Do not ask before executing 'rm *' or 'rm path/*'.
 setopt rm_star_silent
@@ -28,14 +29,14 @@ bindkey -v "^?" backward-delete-char
 export GPG_TTY="$(tty)"
 
 # Load aliases.
-if [ -f "$HOME/.config/aliasrc" ]; then
-	source "$HOME/.config/aliasrc"
+if [ -f "$XDG_CONFIG_HOME/aliasrc" ]; then
+	source "$XDG_CONFIG_HOME/aliasrc"
 fi
 
 # Load Zsh scripts.
 
-autosuggestions="$HOME/.local/share/zsh/autosuggestions/zsh-autosuggestions.zsh"
-syntax_highlight="$HOME/.local/share/zsh/syntax-highlighting/zsh-syntax-highlighting.zsh"
+autosuggestions="$XDG_DATA_HOME/zsh/autosuggestions/zsh-autosuggestions.zsh"
+syntax_highlight="$XDG_DATA_HOME/zsh/syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 if [ -f "$autosuggestions" ]; then
 	source "$autosuggestions"

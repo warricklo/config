@@ -24,5 +24,8 @@ alias vim="nvim"
 # Clear history (needs to be sourced).
 alias clhs="source \$HOME/bin/clhs"
 
+# startx does not respect $XINITRC.
+alias startx="startx \$XINITRC"
+
 # Alias git bare to manage configuration files.
 alias cfg="/usr/bin/git --git-dir=\$HOME/cfg --work-tree=\$HOME"
