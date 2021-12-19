@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Capture screen with maim.
+#
+# Either screenshot entire screen or manually select a region. Saves to a
+# screenshots directory and optionally copies to clipboard.
+
+command -v maim > /dev/null || exit 1
+
+dir="$(xdg-user-dir PICTURES)/screenshots"
+path="$dir/$(date '+%Y-%m-%dT%H:%M:%S').png"
+
+if [ ! -d "$dir" ]; then
+	mkdir "$dir"
+fi
+
+if [ "$1" = "region" ]; then
+	args="-s -b 1 -c 0.92,0.86,0.70"
+elif [ "$1" = "full" ]; then
+	args=""
+else
+	echo "Usage: screenshot [region|full] <clipboard>"
+	exit 1
+fi
+
+# shellcheck disable=SC2086
+if [ "$2" = "clipboard" ]; then
+	maim $args | tee "$path" | xclip -selection clipboard -t image/png
+else
+	maim $args "$path"
+fi
