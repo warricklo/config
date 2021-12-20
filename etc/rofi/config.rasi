@@ -5,6 +5,6 @@ configuration {
 		delay: 10;
 		action: "kb-cancel";
 	}
-
-	theme: "theme";
 }
+
+@theme "theme"
