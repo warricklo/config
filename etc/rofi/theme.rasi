@@ -6,10 +6,6 @@ configuration {
 	icon-theme: "Paper";
 	modi: "drun,run,window,ssh";
 	sidebar-mode: true;
-	display-drun: "drun";
-	display-run: "run";
-	display-window: "window";
-	display-ssh: "ssh";
 }
 
 * {
@@ -22,16 +18,14 @@ configuration {
 	background-color: @black;
 	text-color: @white;
 
-	border: 2px;
 	margin: 2px;
 }
 
 window {
 	border: 1px;
 	border-color: @orange;
-	border-radius: 8px;
-	width: 32%;
-	padding: 32px;
+	width: 30%;
+	padding: 8;
 }
 
 inputbar {
@@ -43,6 +37,7 @@ inputbar {
 
 listview {
 	columns: 1;
+	spacing: 4px;
 }
 
 prompt {
@@ -64,7 +59,6 @@ button {
 element {
 	font: "Inter Medium 12";
 	border: 0;
-	border-radius: 4px;
 	padding: 2px;
 }
 
@@ -92,8 +86,6 @@ button {
 	background-color: @white;
 	text-color: @black;
 	font: "Inter Bold 10";
-	border: 0;
-	border-radius: 4px;
 	padding: 4px;
 	horizontal-align: 0.5;
 	vertical-align: 0.5;
