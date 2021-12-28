@@ -18,7 +18,7 @@ configuration {
 	background-color: @black;
 	text-color: @white;
 
-	margin: 2px;
+	padding: 2px;
 }
 
 window {
@@ -32,12 +32,12 @@ inputbar {
 	children: [prompt, entry];
 	border: 0 0 2px 0;
 	border-color: @blue;
-	padding: 4px;
 }
 
 listview {
 	columns: 1;
 	spacing: 4px;
+	padding: 2px 0;
 }
 
 prompt {
