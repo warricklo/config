@@ -14,7 +14,7 @@
 	width = 360
 	height = 180
 	origin = bottom-right
-	offset = 8x8
+	offset = 16x16
 
 	icon_position = left
 	max_icon_size = 32
