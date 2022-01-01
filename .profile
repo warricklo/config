@@ -16,7 +16,7 @@ export XDG_DATA_HOME="$HOME/usr/share"
 export XDG_STATE_HOME="$HOME/var/lib"
 
 # Set default programs.
-export TERMINAL="alacritty"
+export TERMINAL="st"
 export PAGER="less"
 export EDITOR="nvim"
 export BROWSER="brave"
